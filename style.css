@@ -4,7 +4,23 @@
     padding: 0px;
 }
 
+/* Score */
+.scores{
+    display: inline-block;
+    position: absolute;
+    top: 5vh;
+    right: 3vw;
+    font-weight: bold;
+    font-size:1.5rem;
+}
+
+.highscore{
+    box-sizing: border-box;
+    margin-top: 1vw;
+}
+
 /* Main element containing whole thing */
+
 .main{
     height: 100%;
     width: 100%;
