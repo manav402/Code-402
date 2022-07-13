@@ -1,11 +1,11 @@
-a static sky for background  - jpg
-a static ground for foreground  - jpg
-a character with 5 position - png
-   1.middle (afk)
-   2.walking-step-1 (right)
-   3.walking-step-2 (right)
-   4.walking-step-1 (left)
-   5.walking-step-2 (left)
-a enemy character with same 4 position (without afk image) - png
-a bullet image (right) - png
-same bullet animation on (left) - png
+a static sky for background  - jpg  done
+a static ground for foreground  - jpg  done
+a character with 5 position - png  done
+   1.middle (afk)  done
+   2.walking-step-1 (right)  done
+   3.walking-step-2 (right)  done
+   4.walking-step-1 (left)  done
+   5.walking-step-2 (left)  done
+a enemy character with same 4 position (without afk image) - png  done
+a bullet image (right) - png  done
+same bullet animation on (left) - png  done
