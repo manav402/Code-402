@@ -1,12 +1,52 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Two Player Game</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    
+
+    <div class="main">
+
+        <div class="sky"></div>
+        <div class="ground"></div>
+
+        <div class="Heros">
+
+            <div class="Progress progressHero">
+                <progress id="ProgHero" value="100" max="100"></progress>
+            </div>
+
+            <div class="Character hero">
+                <img src="Hero/hero-still-right.png" alt="hero Standing Right">
+            </div>
+
+        </div>
+
+        <div class="Enemys">
+
+            <div class="Progress progressEnemy">
+                <progress id="ProgEnemy" value="100" max="100"></progress>
+            </div>
+
+            <div class="Character enemy">
+                <img src="Enemy/enemy-still-left.png" alt="enemy standing left">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>

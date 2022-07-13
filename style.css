@@ -1,0 +1,76 @@
+/* Body Element */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Main element containing whole thing */
+.main{
+    height: 100%;
+    width: 100%;
+}
+
+/* Background contains */
+.sky{
+    height:70vh;
+    width:100%;
+    background: url("Backgrounds/sky.jpg") repeat 0 0;
+    /* background-color: black; */
+}
+
+.ground{
+    height:30vh;
+    width:100%;
+    background: url("Backgrounds/ground.png") repeat 0 0;
+}
+
+/* Characters Contains*/
+
+.Character{
+    display: inline-block;
+    position: absolute;
+    z-index: 20;
+    top:50vh;
+}
+
+.Character img{
+    height:20vh;
+}
+
+.hero{
+    left:0vh;
+    top:52vh !important;
+}
+
+.enemy{
+    right:0;
+    top: 52vh !important;
+}
+
+/* Progress Bar Contains */
+
+.Progress{
+    display: inline-block;
+    position: absolute;
+    top: 48vh;
+    
+}
+
+.progressHero{
+    left:0vh;
+    
+}
+
+#ProgHero{
+    height: 3vh !important;
+    width:100px;
+}
+
+#ProgEnemy{
+    height: 3vh !important;
+    width:100px;
+}
+
+.progressEnemy{
+    right:0vh;
+}
