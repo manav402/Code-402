@@ -8,20 +8,20 @@
     height: 20vh;
 }
 .up{
-    left:10vw;
+    left:16vw;
     margin-left:-5vw;
 }
 .up img{
     height: 15vh
 }
 .left{
-    left:0vw;
+    left:5vw;
 }
 .right{
-    left:20vw;
+    left:25vw;
 }
 .shoot{
-    right:0vw;
+    right:10vw;
 }
 .shoot img{
     width: 15vh !important;
