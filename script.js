@@ -4,6 +4,8 @@ let i = 0;
 let j = 0;
 let HeroGoingleft = false;
 
+//Laptop Coding Starts Here
+
 console.log(document.documentElement.clientWidth);
 
 let width=document.querySelector(".score-heading");
@@ -124,3 +126,23 @@ function shoot(gunPosition){
         gun.classList.add("hidden");
     },2000);
 }
+
+//Mobile Coding Starts Here
+
+let upButton=document.querySelector(".up");
+let leftButton=document.querySelector(".left");
+let rightButton=document.querySelector(".right");
+let shootButton=document.querySelector(".shoot");
+
+upButton.addEventListener("click",function(){
+    moveHero(" ");
+});
+leftButton.addEventListener("click",function(){
+    moveHero("a");
+});
+rightButton.addEventListener("click",function(){
+    moveHero("d");
+});
+shootButton.addEventListener("click",function(){
+    moveHero("v");
+});
