@@ -6,6 +6,9 @@ let HeroGoingleft = false;
 
 console.log(document.documentElement.clientWidth);
 
+let width=document.querySelector(".score-heading");
+width.textContent="Width is "+document.documentElement.clientWidth;
+
 document.addEventListener("DOMContentLoaded", function () {
     //   if(e.key==="w"){
     // console.log("dom contant loaded");
