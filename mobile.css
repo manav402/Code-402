@@ -1,10 +1,32 @@
-.up{
+.navigating{
     position: absolute;
     display: inline-block;
-    top:80vh;
-    left:10vw;
+    top: 80vh;
     z-index: 30;
 }
+.arrowimgs{
+    height: 20vh;
+}
+.up{
+    left:10vw;
+    margin-left:-5vw;
+}
 .up img{
-    height: 10vh;
+    height: 15vh
+}
+.left{
+    left:0vw;
+}
+.right{
+    left:20vw;
+}
+.shoot{
+    right:0vw;
+}
+.shoot img{
+    width: 15vh !important;
+    height: auto !important;
+}
+.rotate{
+    display:none;
 }

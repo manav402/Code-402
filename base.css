@@ -40,6 +40,10 @@
     background: url("Backgrounds/ground.png") repeat 0 0;
 }
 
+.rotate{
+    display:none;
+}
+
 /* Characters Contains*/
 
 .Character {

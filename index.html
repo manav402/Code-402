@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="style.css" media="screen and (min-device-width:801px)">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-device-width:800px)">
+    <link rel="stylesheet" href="rotate.css" media="screen and (max-device-width:400px)">
 
 </head>
 
 <body>
-
+    <div class="rotate">
+        <h1>Please Rotate Your Device To Play...</h1>
+    </div>
     <div class="main">
 
         <div class="sky"></div>
@@ -62,18 +65,18 @@
     
     <div class="arrows">
         <div class="navigate">
-            <div class="up">
-                <img class="up-arrowimg" src="Arrows/up.png" alt="up arrow key">
+            <div class="up navigating">
+                <img class="up-arrowimg arrowimgs" src="Arrows/up.png" alt="up arrow key">
             </div>
-            <div class="left">
-                <img src="Arrows/left.png" alt="left-arrowimg" class="leftimg">  
+            <div class="left navigating">
+                <img src="Arrows/left.png" alt="left-arrowimg" class="leftimg arrowimgs">  
             </div>
-            <div class="right">
-                <img src="Arrows/right.png" alt="right-arrowimg" class="rightimg">
+            <div class="right navigating">
+                <img src="Arrows/right.png" alt="right-arrowimg" class="rightimg arrowimgs">
             </div>
         </div>
-        <div class="shoot">
-            <img src="Arrows/shoot.png" class="shootimg" alt="shoot button">
+        <div class="shoot navigating">
+            <img src="Arrows/shoot.png" class="shootimg arrowimgs" alt="shoot button">
         </div>
     </div>
 
