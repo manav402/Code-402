@@ -4,50 +4,7 @@ let i = 0;
 let j = 0;
 let HeroGoingleft = false;
 
-// function moveEnemy() {
-//     let speed = 5;
-//     let enemy = document.querySelector(".enemy");
-//     let enemyImg = document.querySelector(".enemyImg");
-//     let enemyProgress = document.querySelector(".progressEnemy");
-//     let width = document.documentElement.clientWidth;
-//     position = enemy.style.right;
-//     progressPosition = enemyProgress.style.right;
-//     position = Number(position.substring(0, position.length - 2));
-//     progressPosition = Number(progressPosition.substring(0, progressPosition.length - 2));
-//     // console.log(position);
 
-//     let img1 = "Enemy/enemy-left-1.png";
-
-//     (goingLeft) ? img1 = "Enemy/enemy-left-" + i % 3 + ".png" : img1 = "Enemy/enemy-right-" + i % 3 + ".png";
-//     // console.log(img1);
-//     // position+=10;
-//     if ((position + speed) <= width - 50 && goingLeft) {
-//         position = position + speed;
-//         progressPosition = progressPosition + speed;
-//         if (position === width - 50) {
-//             goingLeft = false;
-//             enemyImg.src = "Enemy/enemy-0-right.png"
-//         }
-//     }
-//     else {
-//         position = position - speed;
-//         progressPosition = progressPosition - speed;
-//         if (position === 0) {
-//             goingLeft = true;
-//             enemyImg.src = "Enemy/enemy-0-left.png"
-//         }
-//     }
-//     if (position % 6 === 0) {
-//         i++;
-//     }
-//     enemyImg.src = img1;
-//     // console.log(position);
-//     position += "px";
-//     progressPosition += "px";
-//     // console.log(position);
-//     enemy.style.right = position;
-//     enemyProgress.style.right = progressPosition;
-// }
 
 document.addEventListener("DOMContentLoaded", function () {
     //   if(e.key==="w"){
