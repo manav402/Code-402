@@ -43,6 +43,9 @@
 .rotate{
     display:none;
 }
+.rotate h1{
+    display:none;
+}
 
 /* Characters Contains*/
 

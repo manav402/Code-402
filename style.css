@@ -123,6 +123,12 @@
 .arrows{
     display:none;
 }
+.rotate{
+    display: none;
+}
+.rotate h1{
+    display: none;
+}
 @keyframes GunRight{
     100%{
          left:94vw;
