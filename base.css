@@ -39,7 +39,12 @@
     width: 100%;
     background: url("Backgrounds/ground.png") repeat 0 0;
 }
-
+Button{
+    decoration: none;
+    background-color: transparent;
+    border:none;
+    
+}
 .rotate{
     display:none;
 }
