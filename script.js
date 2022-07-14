@@ -32,7 +32,7 @@ function moveHero(key) {
     let width = document.documentElement.clientWidth;
     positionH = hero.style.left;
     progressPositionH = heroProgress.style.left;
-    positionH = Number(positionH.substring(0, positionH.length - 2));
+    // 
     progressPositionH = Number(progressPositionH.substring(0, progressPositionH.length - 2));
     // console.log(position);
 
@@ -47,7 +47,10 @@ function moveHero(key) {
     }
     else if (key === "v") {
         standingStill = true;
-        shooting = true;
+        shooting = false;
+        if(document.querySelector(".gun").classList.contains("hidden")){
+           shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
+        }
     }
     else if (key === " "){
         let jumpMe=document.querySelector(".hero");
@@ -65,7 +68,7 @@ function moveHero(key) {
         standingStill = true;
         j = 0;
     }
-
+    positionH = Number(positionH.substring(0, positionH.length - 2));
 
     (!HeroGoingleft) ? imgH = "Hero/hero-right-" + j % 3 + ".png" : imgH = "Hero/hero-left-" + j % 3 + ".png";
     // console.log(img1);
@@ -100,10 +103,6 @@ function moveHero(key) {
     // console.log(position);
     hero.style.left = positionH;
     heroProgress.style.left = progressPositionH;
-    if(shooting){
-        shooting=false;
-        shoot(positionH.substring(0,positionH.length-2));
-    }
 }
 
 function shoot(gunPosition){
@@ -122,9 +121,9 @@ function shoot(gunPosition){
         gun.style.animation="GunLeft linear 2s 1";
         gunImg.src="Bullets/bullet-1.png";
     }
-    setTimeout(function(){
+    setTimeout(() => {
         gun.classList.add("hidden");
-    },2000);
+    }, 2000);
 }
 
 //Mobile Coding Starts Here
