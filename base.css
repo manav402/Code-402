@@ -58,7 +58,6 @@ Button{
     display: inline-block;
     position: absolute;
     z-index: 20;
-    top: 50vh;
 }
 
 .Character img {
@@ -67,12 +66,12 @@ Button{
 
 .hero {
     left: 0vh;
-    top: 52vh;
+    /* top: 52vh; */
 }
 
 .enemy {
     right: 0;
-    top: 52vh !important;
+    /* animation: EnemyAni 8s infinite; */
 }
 
 /* Progress Bar Contains */
@@ -80,13 +79,12 @@ Button{
 .Progress {
     display: inline-block;
     position: absolute;
-    top: 48vh;
+    /* top: 48vh; */
 
 }
 
 .progressHero {
     left: 0vh;
-
 }
 
 #ProgHero {
@@ -101,12 +99,13 @@ Button{
 
 .progressEnemy {
     right: 0vh;
+    /* animation: EnemyAni 8s infinite; */
 }
 
 .Enemys {
     display: inline-block;
     position: absolute;
-    top: 0vh;
+    top: 50vh;
     right: 0vw;
     animation: EnemyAni linear 15s Infinite;
 }
@@ -114,8 +113,9 @@ Button{
 .Heros {
     display: inline-block;
     position: absolute;
-    top: 0vh;
+    top: 50vh;
     left: 0vw;
+    animation: jump 1s 1;
 }
 
 .hidden {
@@ -152,23 +152,20 @@ Button{
 @keyframes EnemyAni {
     0% {
         right: 0vw;
-        src: url("Hero/hero-left-1.png");
     }
 
     50% {
         right: 95vw;
-        src: url("Hero/hero-left-2.png");
     }
 
     100% {
         right: 0vw;
-        src: url("Hero/hero-left-1.png");
     }
 }
 
 @keyframes jump {
     0% {
-        top: 52vh;
+        top: 50vh;
     }
 
     50% {
@@ -176,7 +173,7 @@ Button{
     }
 
     100% {
-        top: 52vh;
+        top: 50vh;
     }
 }
 

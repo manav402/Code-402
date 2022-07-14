@@ -53,13 +53,13 @@ function moveHero(key) {
         }
     }
     else if (key === " "){
-        let jumpMe=document.querySelector(".hero");
-        let jumpBar=document.querySelector(".progressHero");
+        let jumpMe=document.querySelector(".Heros");
+        // let jumpBar=document.querySelector(".progressHero");
         jumpMe.style.animation="jump ease-in-out 0.8s 1";
-        jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
+        // jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
         setTimeout(function(){
             jumpMe.style.animation="";
-            jumpBar.style.animation="";
+            // jumpBar.style.animation="";
         },1000);
         standingStill= true;
         j= 0;
@@ -85,11 +85,14 @@ function moveHero(key) {
             }
         }
         else {
+            console.log(positionH);
             positionH = positionH - speedH;
             progressPositionH = progressPositionH - speedH;
             if (positionH <= 0) {
                 HeroGoingleft = false;
                 heroImg.src = "Hero/hero-0-left.png"
+                positionH=0;
+                progressPositionH=0;
             }
         }
     }
@@ -126,6 +129,8 @@ function shoot(gunPosition){
     }, 2000);
 }
 
+
+
 //Mobile Coding Starts Here
 
 let upButton=document.querySelector(".up");
@@ -145,3 +150,18 @@ rightButton.addEventListener("click",function(){
 shootButton.addEventListener("click",function(){
     moveHero("v");
 });
+
+
+let enemyImg=document.querySelector(".enemyImg");
+let enemy=document.querySelector(".enemy");
+setInterval(() => {
+    // console.log(enemy.style.right);
+    // console.log(enemyImg.style.right);
+    // console.log(document.querySelector(".Enemys").style.right);
+    if(enemy.style.right==="0vw"){
+        enemyImg.src="Enemy/enemy-0.png";
+    }
+    else if(enemy.style.right==="95vw"){
+        enemyImg.src="Enemy/enemy-1.png";
+    }
+}, 1000);

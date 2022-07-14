@@ -46,7 +46,7 @@
     display: inline-block;
     position: absolute;
     z-index: 20;
-    top:50vh;
+    /* top:50vh; */
 }
 
 .Character img{
@@ -55,12 +55,12 @@
 
 .hero{
     left:0vh;
-    top:52vh;
+    /* top:52vh; */
 }
 
 .enemy{
     right:0;
-    top: 52vh !important;
+    /* top: 52vh !important; */
 }
 
 /* Progress Bar Contains */
@@ -68,13 +68,13 @@
 .Progress{
     display: inline-block;
     position: absolute;
-    top: 48vh;
+    /* top: 48vh; */
     
 }
 
 .progressHero{
     left:0vh;
-    
+    margin-top:-1vh;
 }
 
 #ProgHero{
@@ -89,20 +89,24 @@
 
 .progressEnemy{
     right:0vh;
+    /* top:51vh; */
+    margin-top:-1vh;
+    /* color: red; */
 }
 
 .Enemys{
     display: inline-block;
     position: absolute;
-    top: 0vh;
+    top: 52vh;
     right: 0vw;
     animation: EnemyAni linear 15s Infinite;
 }
 .Heros{
     display: inline-block;
     position: absolute;
-    top: 0vh;
+    top: 52vh;
     left: 0vw;
+    /* animation:jump 1s 1; */
 }
 .hidden{
     display: none;
