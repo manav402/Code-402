@@ -55,7 +55,7 @@
 
 .hero{
     left:0vh;
-    top:52vh !important;
+    top:52vh;
 }
 
 .enemy{
@@ -89,4 +89,80 @@
 
 .progressEnemy{
     right:0vh;
+}
+
+.Enemys{
+    display: inline-block;
+    position: absolute;
+    top: 0vh;
+    right: 0vw;
+    animation: EnemyAni linear 15s Infinite;
+}
+.Heros{
+    display: inline-block;
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+}
+.hidden{
+    display: none;
+}
+.gun{
+    position: absolute;
+    top: 57vh;
+    left:0vw;
+    max-height: 10vh;
+    max-width: 10vh;
+    overflow: hidden;
+}
+.gun img{
+    height: 10vh;
+    width: 10vh;
+    overflow: hidden;
+}
+@keyframes GunRight{
+    100%{
+         left:94vw;
+    }
+}
+@keyframes GunLeft{
+    100%{
+         left:2vw;
+    }
+}
+@keyframes EnemyAni {
+    0%{
+         right: 0vw;
+         src:url("Hero/hero-left-1.png");
+    }
+    50%{
+        right: 95vw;
+        src: url("Hero/hero-left-2.png");
+    }
+    100%{
+        right: 0vw;
+        src: url("Hero/hero-left-1.png");
+    }
+}
+@keyframes jump {
+    0%{
+        top: 52vh;
+    }
+    50%{
+        top: 22vh;
+    }
+    100%{
+        top: 52vh;
+    }
+}
+@keyframes jumpBar {
+    0%{
+        top: 48vh;
+    }
+    50%{
+        top: 18vh;
+    }
+    100%{
+        top: 48vh;
+    }
 }
