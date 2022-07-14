@@ -9,3 +9,10 @@ a character with 5 position - png  done
 a enemy character with same 4 position (without afk image) - png  done
 a bullet image (right) - png  done
 same bullet animation on (left) - png  done
+
+if device width <=700 and >=300 
+    then show buttons
+else if device width >=700 
+    then don't show buttons its a laptop
+else
+   tell them to rotate screen as they are in mobile horizentally

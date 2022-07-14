@@ -1,0 +1,10 @@
+.up{
+    position: absolute;
+    display: inline-block;
+    top:80vh;
+    left:10vw;
+    z-index: 30;
+}
+.up img{
+    height: 10vh;
+}

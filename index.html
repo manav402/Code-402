@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Player Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css" media="screen and (min-device-width:801px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-device-width:800px)">
 
 </head>
 
@@ -56,6 +58,23 @@
             <img class="gunImg" src="Bullets/bullet-0.png" alt="gun">
         </div>
 
+    </div>
+    
+    <div class="arrows">
+        <div class="navigate">
+            <div class="up">
+                <img class="up-arrowimg" src="Arrows/up.png" alt="up arrow key">
+            </div>
+            <div class="left">
+                <img src="Arrows/left.png" alt="left-arrowimg" class="leftimg">  
+            </div>
+            <div class="right">
+                <img src="Arrows/right.png" alt="right-arrowimg" class="rightimg">
+            </div>
+        </div>
+        <div class="shoot">
+            <img src="Arrows/shoot.png" class="shootimg" alt="shoot button">
+        </div>
     </div>
 
     <script src="script.js"></script>
