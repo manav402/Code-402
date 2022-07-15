@@ -127,6 +127,9 @@
 .arrows{
     display:none;
 }
+.shoot{
+    display:none;
+}
 .rotate{
     display: none;
 }

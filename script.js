@@ -3,7 +3,7 @@ let goingLeft = true;
 let i = 0;
 let j = 0;
 let HeroGoingleft = false;
-let version = "1.3.1 with added delay"
+let version = "1.3.2"
 //Laptop Coding Starts Here
 
 // console.log(document.documentElement.clientWidth);
