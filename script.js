@@ -10,7 +10,7 @@ let alredyColided = false;
 
 //Laptop Coding Starts Here
 
-console.log(document.documentElement.clientWidth);
+// console.log(document.documentElement.clientWidth);
 
 let width = document.querySelector(".score-heading");
 width.textContent = "version is " + version;
@@ -26,6 +26,7 @@ document.addEventListener("keydown", function (e) {
     moveHero(e.key);
 });
 let lastHeroPosition;
+let alredyFired=false;
 function moveHero(key) {
     let standingStill = false;
     let shooting = false;
@@ -53,11 +54,12 @@ function moveHero(key) {
         HeroGoingleft = false;
         standingStill = false;
     }
-    else if (key === "v") {
+    else if (key == "v") {
         standingStill = true;
         shooting = false;
-        console.log(document.querySelector(".gun").style.visibility);
-        if (document.querySelector(".gun").style.visibility == "hidden") {
+        // console.log(document.querySelector(".gun").style.visibility);
+        if (!alredyFired) {
+            alredyFired = true;
             // shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
             shoot();
         }
@@ -126,12 +128,13 @@ function shoot() {
     let gun = document.querySelector(".gun");
     let bulletPosition = Number(lastHeroPosition);
     let gunImg = document.querySelector(".gunImg");
+    gun.style.top=document.querySelector(".hero").style.top;
     let speedG = 80;
     alredyColided=false;
     // gun.classList.remove("hidden");
-    console.log(gun.style.visibility);
+    // console.log(gun.style.visibility);
     gun.style.visibility = "visible";
-    console.log(gun.style.visibility);
+    // console.log(gun.style.visibility);
     // gun.style.display = "inline-block";
     gun.style.left = bulletPosition;
     gun.style.left = bulletPosition + "px";
@@ -148,6 +151,8 @@ function shoot() {
         gun.style.visibility="hidden";
         gun.style.animation="";
         gun.style.left=lastHeroPosition;
+        gun.style.top="57vh";
+        alredyFired=false;
         // gun.style.display="none";
     }, 2000);
 }
@@ -181,21 +186,21 @@ let oldX = 0, oldY = 0, newX, newY;
 let shootElement = document.querySelector(".shoot");
 touchArea.addEventListener("touchmove", function (e) {
     // setTimeout(() => {
-    console.log("even if you tuch this will only print after 1 second");
+    // console.log("even if you tuch this will only print after 1 second");
 
-    console.log("touch is in " + e.touches[0].clientX + " " + e.touches[0].clientY);
+    // console.log("touch is in " + e.touches[0].clientX + " " + e.touches[0].clientY);
     newX = e.touches[0].clientX;
     newY = e.touches[0].clientY;
     if (newX > oldX && newY <= oldY + 50 && newY >= oldY - 50) {
-        console.log("here");
+        // console.log("here");
         moveHero("d");
     }
     else if (newX < oldX && newY <= oldY + 50 && newY >= oldY - 50) {
-        console.log("here");
+        // console.log("here");
         moveHero("a");
     }
     else if (newY > oldY && newX <= oldX + 50 && newX >= oldX - 50) {
-        console.log("here");
+        // console.log("here");
         moveHero(" ");
     }
     oldX = newX;
@@ -203,7 +208,7 @@ touchArea.addEventListener("touchmove", function (e) {
     // }, 200);
 });
 shootElement.addEventListener("touchstart", function (ex) {
-    console.log("touch is in " + ex.touches[0].clientX + " " + ex.touches[0].clientY);
+    // console.log("touch is in " + ex.touches[0].clientX + " " + ex.touches[0].clientY);
     oldX = ex.touches[0].clientX;
     oldY = ex.touches[0].clientY;
     shoot();
@@ -345,16 +350,17 @@ let enemyPos= document.querySelector(".enemy");
 let enemydiv= document.querySelector(".Enemys");
 let enemyHealth=document.querySelector("#ProgEnemy");
 let playerpos= document.querySelector(".Heros");
+
 setInterval(() => {
     let gunpos=gun.getBoundingClientRect();
     let enemypos=enemyPos.getBoundingClientRect();
-console.log(enemypos.top, enemypos.bottom-enemypos.top, gunpos.top, enemypos.right,enemypos.left);
+// console.log(enemypos.top, enemypos.bottom-enemypos.top, gunpos.top, enemypos.right,enemypos.left);
 if(gunpos.top <= enemypos.bottom && !alredyColided){
     // alert("Collision");
-    if(gunpos.right >= enemypos.left){
+    if(gunpos.right >= enemypos.left-20 && gunpos.right <= enemypos.left+20){
         // alert("Collision");
         alredyColided=true;
-        enemyHealth.value=Number(enemyHealth.value)-100;
+        enemyHealth.value=Number(enemyHealth.value)-10;
         if(enemyHealth.value<=0){
             enemydiv.classList.add("hidden");
             document.querySelector(".winbox").classList.remove("hidden");
@@ -362,6 +368,7 @@ if(gunpos.top <= enemypos.bottom && !alredyColided){
         }
         gun.style.left=playerpos.style.left;
         gun.style.animation="";
+        alredyFired=false;
         gun.style.visibility="hidden";
         // console.log(Number(enemyHealth.value));
     }
@@ -371,14 +378,19 @@ if(gunpos.top <= enemypos.bottom && !alredyColided){
 
 function vanish(){
 // let x=document.querySelector(".again").addEventListener("click",function(){
-    console.log("cl");
+    // console.log("cl");
        document.querySelector(".winbox").classList.add("hidden");
        document.querySelector(".winPage").classList.add("hidden");
     //   let e= document.querySelector(".Enemys").classList.remove("hidden");
     //   e.style.right="0px";
     enemydiv.classList.remove("hidden");
     enemyHealth.value="100";
-    enemydiv.style.right="0px";
+    enemyPos.style.right="0px";
+    oldPosition=0;
+    playerpos.style.left="0px";
+    document.querySelector(".hero").style.left="0px";
+    document.querySelector(".progressHero").style.left="0px";
+    // lastHeroPosition="0";
 
     //    document.querySelector(".winPage").style.visibility="hidden";
 }
