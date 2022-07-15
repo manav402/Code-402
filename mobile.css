@@ -7,6 +7,9 @@
     top: 80vh;
     z-index: 30;
 }
+h1{
+    font-size:2.5rem;
+}
 Button{
     border : none;
     background-color: transparent;
@@ -15,8 +18,8 @@ Button{
     height: 20vh;
 }
 .up{
-    left:16vw;
-    margin-left:-5vw;
+    left:12vw;
+    /* margin-left:-5vw; */
 }
 .up img{
     height: 15vh
@@ -25,7 +28,7 @@ Button{
     left:5vw;
 }
 .right{
-    left:25vw;
+    left:18vw;
 }
 .shoot{
     right:10vw;
