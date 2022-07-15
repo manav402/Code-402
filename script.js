@@ -30,11 +30,11 @@ function moveHero(key) {
     let heroImg = document.querySelector(".heroImg");
     let heroProgress = document.querySelector(".progressHero");
     let width = document.documentElement.clientWidth;
-    let onMobile=false;
+    let onMobile = false;
     positionH = hero.style.left;
     progressPositionH = heroProgress.style.left;
-    if(document.documentElement.clientWidth<=1100){
-        onMobile=true;
+    if (document.documentElement.clientWidth <= 1100) {
+        onMobile = true;
         speedH = 3;
     }
     progressPositionH = Number(progressPositionH.substring(0, progressPositionH.length - 2));
@@ -58,11 +58,11 @@ function moveHero(key) {
     }
     else if (key === " ") {
         let jumpMe = document.querySelector(".Heros");
-        let delay=800;
+        let delay = 800;
         // let jumpBar=document.querySelector(".progressHero");
-        (onMobile)?jumpMe.style.animation = "jump ease-in-out 0.1s 1":jumpMe.style.animation = "jump ease-in-out 0.8s 1";
+        (onMobile) ? jumpMe.style.animation = "jump ease-in-out 0.1s 1" : jumpMe.style.animation = "jump ease-in-out 0.8s 1";
         // jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
-        onMobile?delay=100:delay=800;
+        onMobile ? delay = 100 : delay = 800;
         setTimeout(function () {
             jumpMe.style.animation = "";
             // jumpBar.style.animation="";
@@ -162,7 +162,7 @@ shootButton.addEventListener("click", function () {
 
 let touchArea = document.querySelector(".arrows");
 let oldX = 0, oldY = 0, newX, newY;
-let shootElement= document.querySelector(".shoot");
+let shootElement = document.querySelector(".shoot");
 touchArea.addEventListener("touchmove", function (e) {
     // setTimeout(() => {
     console.log("even if you tuch this will only print after 1 second");
@@ -214,3 +214,84 @@ setInterval(() => {
         enemyImg.src = "Enemy/enemy-left-0.png";
     }
 }, animationSpeed / 2);
+upButton.addEventListener("click", function () {
+    moveHero(" ");
+});
+leftButton.addEventListener("click", function () {
+    moveHero("a");
+});
+rightButton.addEventListener("click", function () {
+    moveHero("d");
+});
+shootButton.addEventListener("click", function () {
+    moveHero("v");
+});
+
+
+// Enemy Running Code
+
+setInterval(() => {
+
+    if (!EnemyStanding) {
+        let speedE = -100;
+        let tempImg;
+        (!goingLeft) ? tempImg = "Hero/hero-right-" + ej % 3 + ".png" : tempImg = "Hero/hero-left-" + ej % 3 + ".png";
+
+        let width = document.documentElement.clientWidth;
+        let positionE = enemyCh.style.right;
+        positionE = Number(positionE.substring(0, positionE.length - 2));
+        let progressPositionE = progressEnemy.style.right;
+        if (progressPositionE.substring(progressPositionE.length - 2) == "") {
+            positionE = 10 - width;
+            progressPositionE = 10 - width;
+        } else {
+            progressPositionE = Number(progressPositionE.substring(0, progressPositionE.length - 2));
+        }
+
+        if (width + (positionE + speedE) >= 10 && !goingLeft) {
+            positionE = positionE + speedE;
+            progressPositionE = progressPositionE + speedE;
+            if ((width + positionE) <= 100) {
+                goingLeft = true;
+                tempImg.src = "Hero/hero-right-0.png"
+            }
+        } else {
+            positionE = positionE - speedE;
+            progressPositionE = progressPositionE - speedE;
+            if (positionE > -100) {
+                goingLeft = false;
+                tempImg.src = "Hero/hero-left-0.png"
+                positionE = -100;
+                progressPositionE = -100;
+            }
+        }
+
+        ej++;
+        if (ej % 3 === 0) {
+            ej = 0;
+        }
+        enemyImg.src = tempImg;
+        positionE += "px";
+        progressPositionE += "px";
+        enemyCh.style.right = positionE;
+        progressEnemy.style.right = progressPositionE;
+    }
+}, 1000);
+
+//Enemy Jumping code
+
+setInterval(() => {
+    EnemyStanding = true;
+    let jumpEnemy = (Math.floor(Math.random() * 10) >= 3) ? true : false;
+    // console.log("Jump code: " + jumpEnemy);
+    if (jumpEnemy) {
+        let jumpEnemy = document.querySelector(".Enemys");
+        if (!(jumpEnemy.style.animation)) {
+            jumpEnemy.style.animation = "jump ease-in-out 0.8s 1";
+            setTimeout(function () {
+                jumpEnemy.style.animation = "";
+            }, 1000);
+        }
+    }
+    EnemyStanding = false;
+}, 5000);

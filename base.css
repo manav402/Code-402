@@ -4,7 +4,9 @@
     padding: 0px;
 }
 
+
 /* Score */
+
 .scores {
     display: inline-block;
     position: absolute;
@@ -26,7 +28,9 @@
     width: 100%;
 }
 
+
 /* Background contains */
+
 .sky {
     height: 70vh;
     width: 100%;
@@ -40,13 +44,27 @@
     background: url("Backgrounds/ground.png") repeat 0 0;
 }
 
+Button {
+    decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+.rotate {
+    display: none;
+}
+
+.rotate h1 {
+    display: none;
+}
+
+
 /* Characters Contains*/
 
 .Character {
     display: inline-block;
     position: absolute;
     z-index: 20;
-    /* top:50vh; */
 }
 
 .Character img {
@@ -55,13 +73,14 @@
 
 .hero {
     left: 0vh;
-    /* top:52vh; */
+    /* top: 52vh; */
 }
 
 .enemy {
     right: 0vw;
-    /* top: 52vh !important; */
+    /* animation: EnemyAni 8s infinite; */
 }
+
 
 /* Progress Bar Contains */
 
@@ -85,6 +104,7 @@
     margin-top: -4vh;
     /* color: red; */
 }
+
 #ProgHero {
     height: 3vh;
     width: 15vh;
@@ -133,7 +153,6 @@
     overflow: hidden;
 }
 
-
 @keyframes GunRight {
     100% {
         left: 94vw;
@@ -149,23 +168,20 @@
 @keyframes EnemyAni {
     0% {
         right: 0vw;
-        /* src: url("Hero/hero-left-1.png"); */
     }
 
     50% {
         right: 95vw;
-        /* src: url("Hero/hero-left-2.png"); */
     }
 
     100% {
         right: 0vw;
-        /* src: url("Hero/hero-left-1.png"); */
     }
 }
 
 @keyframes jump {
     0% {
-        top: 52vh;
+        top: 50vh;
     }
 
     50% {
@@ -173,7 +189,7 @@
     }
 
     100% {
-        top: 52vh;
+        top: 50vh;
     }
 }
 

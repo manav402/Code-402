@@ -9,6 +9,11 @@ a character with 5 position - png  done
 a enemy character with same 4 position (without afk image) - png  done
 a bullet image (right) - png  done
 same bullet animation on (left) - png  done
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Govind
 
 if device width <=700 and >=300 
     then show buttons
@@ -16,3 +21,7 @@ else if device width >=700
     then don't show buttons its a laptop
 else
    tell them to rotate screen as they are in mobile horizentally
+<<<<<<< HEAD
+=======
+>>>>>>> fcfa43682d3e522e3f430cf354197ab75a3392af
+>>>>>>> Govind

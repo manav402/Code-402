@@ -1,45 +1,53 @@
-/* *{
-    overflow: hidden;
-} */
-.navigating{
+.navigating {
     position: absolute;
     display: inline-block;
     top: 80vh;
     z-index: 30;
 }
-h1{
-    font-size:2.5rem;
+
+h1 {
+    font-size: 2.5rem;
 }
-Button{
-    border : none;
+
+Button {
+    border: none;
     background-color: transparent;
 }
-.arrowimgs{
+
+.arrowimgs {
     height: 20vh;
 }
-.up{
-    left:12vw;
+
+.up {
+    left: 12vw;
     /* margin-left:-5vw; */
 }
-.up img{
+
+.up img {
     height: 15vh
 }
-.left{
-    left:5vw;
+
+.left {
+    left: 5vw;
 }
-.right{
-    left:18vw;
+
+.right {
+    left: 18vw;
 }
-.shoot{
-    right:10vw;
+
+.shoot {
+    right: 10vw;
 }
-.shoot img{
+
+.shoot img {
     width: 15vh !important;
     height: auto !important;
 }
-.rotate{
-    display:none;
+
+.rotate {
+    display: none;
 }
-.rotate h1{
-    display:none;
+
+.rotate h1 {
+    display: none;
 }
