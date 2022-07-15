@@ -39,18 +39,6 @@
     width: 100%;
     background: url("Backgrounds/ground.png") repeat 0 0;
 }
-Button{
-    decoration: none;
-    background-color: transparent;
-    border:none;
-    
-}
-.rotate{
-    display:none;
-}
-.rotate h1{
-    display:none;
-}
 
 /* Characters Contains*/
 
@@ -58,6 +46,7 @@ Button{
     display: inline-block;
     position: absolute;
     z-index: 20;
+    /* top:50vh; */
 }
 
 .Character img {
@@ -66,12 +55,12 @@ Button{
 
 .hero {
     left: 0vh;
-    /* top: 52vh; */
+    /* top:52vh; */
 }
 
 .enemy {
     right: 0;
-    /* animation: EnemyAni 8s infinite; */
+    /* top: 52vh !important; */
 }
 
 /* Progress Bar Contains */
@@ -84,38 +73,45 @@ Button{
 }
 
 .progressHero {
-    left: 0vh;
-}
-
-#ProgHero {
-    height: 3vh !important;
-    width: 100px;
-}
-
-#ProgEnemy {
-    height: 3vh !important;
-    width: 100px;
+    /* left: 0vh; */
+    width: 100%;
+    margin: auto;
+    margin-top: -4vh;
 }
 
 .progressEnemy {
     right: 0vh;
-    /* animation: EnemyAni 8s infinite; */
+    /* top:51vh; */
+    margin-top: -4vh;
+    /* color: red; */
 }
+#ProgHero {
+    height: 3vh;
+    width: 15vh;
+    /* margin:auto; */
+}
+
+#ProgEnemy {
+    height: 3vh;
+    width: 15vh;
+}
+
 
 .Enemys {
     display: inline-block;
     position: absolute;
-    top: 50vh;
+    top: 52vh;
     right: 0vw;
     animation: EnemyAni linear 15s Infinite;
 }
 
 .Heros {
     display: inline-block;
+    /* align-items: center; */
     position: absolute;
-    top: 50vh;
+    top: 52vh;
     left: 0vw;
-    animation: jump 1s 1;
+    /* animation:jump 1s 1; */
 }
 
 .hidden {
@@ -137,6 +133,7 @@ Button{
     overflow: hidden;
 }
 
+
 @keyframes GunRight {
     100% {
         left: 94vw;
@@ -152,20 +149,23 @@ Button{
 @keyframes EnemyAni {
     0% {
         right: 0vw;
+        src: url("Hero/hero-left-1.png");
     }
 
     50% {
         right: 95vw;
+        src: url("Hero/hero-left-2.png");
     }
 
     100% {
         right: 0vw;
+        src: url("Hero/hero-left-1.png");
     }
 }
 
 @keyframes jump {
     0% {
-        top: 50vh;
+        top: 52vh;
     }
 
     50% {
@@ -173,7 +173,7 @@ Button{
     }
 
     100% {
-        top: 50vh;
+        top: 52vh;
     }
 }
 

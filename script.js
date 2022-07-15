@@ -6,7 +6,7 @@ let HeroGoingleft = false;
 
 //Laptop Coding Starts Here
 
-console.log(document.documentElement.clientWidth);
+// console.log(document.documentElement.clientWidth);
 
 let width=document.querySelector(".score-heading");
 width.textContent="Width is "+document.documentElement.clientWidth;
@@ -85,7 +85,7 @@ function moveHero(key) {
             }
         }
         else {
-            console.log(positionH);
+            // console.log(positionH);//
             positionH = positionH - speedH;
             progressPositionH = progressPositionH - speedH;
             if (positionH <= 0) {

@@ -1,8 +1,15 @@
+/* *{
+    overflow: hidden;
+} */
 .navigating{
     position: absolute;
     display: inline-block;
     top: 80vh;
     z-index: 30;
+}
+Button{
+    border : none;
+    background-color: transparent;
 }
 .arrowimgs{
     height: 20vh;
