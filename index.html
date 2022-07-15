@@ -1,12 +1,87 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Two Player Game</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css" media="screen and (min-device-width:1101px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-device-width:1100px)">
+    <link rel="stylesheet" href="rotate.css" media="screen and (max-device-width:400px)">
+
 </head>
+
 <body>
+    <div class="rotate">
+        <h1>Please Rotate Your Device To Play...</h1>
+    </div>
+    <div class="main">
+
+        <div class="sky"></div>
+        <div class="ground"></div>
+
+        <div class="scores">
+            <div class="score">
+                 <h4 class="score-heading">Score :- 00</h4>
+            </div>
+            <div class="highscore">
+                 <h4>Highscore :- 00</h4>
+            </div>
+        </div>
+
+        <div class="Heros">
+
+            <div class="Progress progressHero">
+                <progress id="ProgHero" value="100" max="100"></progress>
+            </div>
+
+            <div class="Character hero">
+                <img class="heroImg" src="Hero/hero-left-0.png" alt="hero Standing Right">
+            </div>
+
+        </div>
+
+        <div class="Enemys">
+
+            <div class="Progress progressEnemy">
+                <progress id="ProgEnemy" value="100" max="100"></progress>
+            </div>
+
+            <div class="Character enemy">
+                <img class="enemyImg" src="Enemy/enemy-left-0.png" alt="enemy standing left">
+            </div>
+
+        </div>
+
+        <div class="gun hidden">
+            <img class="gunImg" src="Bullets/bullet-0.png" alt="gun">
+        </div>
+
+    </div>
     
+    <div class="arrows">
+        <div class="navigate">
+            <div class="up navigating">
+                <Button><img class="up-arrowimg arrowimgs" src="Arrows/up.png" alt="up arrow key"></Button>
+            </div>
+            <div class="left navigating">
+                <Button><img src="Arrows/left.png" alt="left-arrowimg" class="leftimg arrowimgs"></Button>
+            </div>
+            <div class="right navigating">
+                <Button><img src="Arrows/right.png" alt="right-arrowimg" class="rightimg arrowimgs"></Button>
+            </div>
+        </div>
+        <div class="shoot navigating">
+            <Button><img src="Arrows/shoot.png" class="shootimg arrowimgs" alt="shoot button"></Button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>

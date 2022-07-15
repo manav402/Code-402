@@ -1,0 +1,239 @@
+/* Body Element */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* Score */
+
+.scores {
+    display: inline-block;
+    position: absolute;
+    top: 5vh;
+    right: 3vw;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.highscore {
+    box-sizing: border-box;
+    margin-top: 1vw;
+}
+
+
+/* Main element containing whole thing */
+
+.main {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Background contains */
+
+.sky {
+    height: 70vh;
+    width: 100%;
+    background: url("Backgrounds/sky.jpg") repeat 0 0;
+    /* background-color: black; */
+}
+
+.ground {
+    height: 30vh;
+    width: 100%;
+    background: url("Backgrounds/ground.png") repeat 0 0;
+}
+
+
+/* Characters Contains*/
+
+.Character {
+    display: inline-block;
+    position: absolute;
+    z-index: 20;
+    /* top:50vh; */
+}
+
+.Character img {
+    height: 20vh;
+}
+
+.hero {
+    left: 0vh;
+    /* top:52vh; */
+}
+
+.enemy {
+    right: 0vw;
+    /* top: 52vh !important; */
+}
+
+
+/* Progress Bar Contains */
+
+.Progress {
+    display: inline-block;
+    position: absolute;
+    /* top: 48vh; */
+}
+
+.progressHero {
+    left: 0vh;
+    margin-top: -3vh;
+}
+
+#ProgHero {
+    height: 3vh !important;
+    width: 100px;
+}
+
+#ProgEnemy {
+    height: 3vh !important;
+    width: 100px;
+}
+
+
+/* For Firefox */
+
+#ProgHero::-moz-progress-bar {
+    background: green;
+}
+
+
+/* For Chrome or Safari */
+
+#ProgHero::-webkit-progress-value {
+    background: green;
+}
+
+
+/* For IE10 */
+
+#ProgHero {
+    background: green;
+}
+
+#ProgEnemy::-moz-progress-bar {
+    background: red;
+}
+
+
+/* For Chrome or Safari */
+
+#ProgEnemy::-webkit-progress-value {
+    background: red;
+}
+
+
+/* For IE10 */
+
+#ProgEnemy {
+    background: red;
+}
+
+.progressEnemy {
+    right: 0vh;
+    /* top:51vh; */
+    margin-top: -3vh;
+    /* color: red; */
+}
+
+.Enemys {
+    display: inline-block;
+    position: absolute;
+    top: 52vh;
+    /* right: 0vw; */
+    /* animation: EnemyAni linear 15s Infinite; */
+}
+
+.Heros {
+    display: inline-block;
+    position: absolute;
+    top: 52vh;
+    left: 0vw;
+    /* animation:jump 1s 1; */
+}
+
+.hidden {
+    display: none;
+}
+
+.gun {
+    position: absolute;
+    top: 57vh;
+    left: 0vw;
+    max-height: 10vh;
+    max-width: 10vh;
+    overflow: hidden;
+}
+
+.gun img {
+    height: 10vh;
+    width: 10vh;
+    overflow: hidden;
+}
+
+.arrows {
+    display: none;
+}
+
+.rotate {
+    display: none;
+}
+
+.rotate h1 {
+    display: none;
+}
+
+@keyframes GunRight {
+    100% {
+        left: 94vw;
+    }
+}
+
+@keyframes GunLeft {
+    100% {
+        left: 2vw;
+    }
+}
+
+@keyframes EnemyAni {
+    0% {
+        right: 0vw;
+        src: url("Hero/hero-left-1.png");
+    }
+    50% {
+        right: 95vw;
+        src: url("Hero/hero-left-2.png");
+    }
+    100% {
+        right: 0vw;
+        src: url("Hero/hero-left-1.png");
+    }
+}
+
+@keyframes jump {
+    0% {
+        top: 52vh;
+    }
+    50% {
+        top: 22vh;
+    }
+    100% {
+        top: 52vh;
+    }
+}
+
+@keyframes jumpBar {
+    0% {
+        top: 48vh;
+    }
+    50% {
+        top: 18vh;
+    }
+    100% {
+        top: 48vh;
+    }
+}
