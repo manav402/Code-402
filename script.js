@@ -3,13 +3,13 @@ let goingLeft = true;
 let i = 0;
 let j = 0;
 let HeroGoingleft = false;
-
+let version = "1.3.0 with touch and button"
 //Laptop Coding Starts Here
 
 // console.log(document.documentElement.clientWidth);
 
 let width = document.querySelector(".score-heading");
-width.textContent = "Width is " + document.documentElement.clientWidth;
+width.textContent = "version is " + version;
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     //   if(e.key==="w"){
