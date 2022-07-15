@@ -11,12 +11,12 @@ let HeroGoingleft = false;
 let width=document.querySelector(".score-heading");
 width.textContent="Width is "+document.documentElement.clientWidth;
 
-document.addEventListener("DOMContentLoaded", function () {
-    //   if(e.key==="w"){
-    // console.log("dom contant loaded");
-    // moveEnemy();
-    //   }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     //   if(e.key==="w"){
+//     // console.log("dom contant loaded");
+//     // moveEnemy();
+//     //   }
+// });
 
 document.addEventListener("keydown", function (e) {
     moveHero(e.key);
@@ -154,14 +154,22 @@ shootButton.addEventListener("click",function(){
 
 let enemyImg=document.querySelector(".enemyImg");
 let enemy=document.querySelector(".enemy");
+let animationSpeed=15000;
 setInterval(() => {
-    // console.log(enemy.style.right);
-    // console.log(enemyImg.style.right);
-    // console.log(document.querySelector(".Enemys").style.right);
-    if(enemy.style.right==="0vw"){
-        enemyImg.src="Enemy/enemy-0.png";
+    // console.log("interval");
+    // console.log(enemyImg.src);
+    // if(enemy.style.right==="0vw"){
+    //     console.log("enemy is at 0vw");
+    //     enemyImg.src="Enemy/enemy-0.png";
+    // }
+    // else if(enemy.style.right==="95vw"){
+    //     console.log("enemy is at 95vw");
+    //     enemyImg.src="Enemy/enemy-1.png";
+    // }
+    if (enemyImg.src ==="http://127.0.0.1:5500/Enemy/enemy-left-0.png"){
+        enemyImg.src="Enemy/enemy-right-0.png";
     }
-    else if(enemy.style.right==="95vw"){
-        enemyImg.src="Enemy/enemy-1.png";
+    else{
+        enemyImg.src="Enemy/enemy-left-0.png";
     }
-}, 1000);
+}, animationSpeed/2);

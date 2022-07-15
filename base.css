@@ -59,7 +59,7 @@
 }
 
 .enemy {
-    right: 0;
+    right: 0vw;
     /* top: 52vh !important; */
 }
 
@@ -149,17 +149,17 @@
 @keyframes EnemyAni {
     0% {
         right: 0vw;
-        src: url("Hero/hero-left-1.png");
+        /* src: url("Hero/hero-left-1.png"); */
     }
 
     50% {
         right: 95vw;
-        src: url("Hero/hero-left-2.png");
+        /* src: url("Hero/hero-left-2.png"); */
     }
 
     100% {
         right: 0vw;
-        src: url("Hero/hero-left-1.png");
+        /* src: url("Hero/hero-left-1.png"); */
     }
 }
 
