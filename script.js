@@ -1,12 +1,16 @@
+//Notice for github public :- Highly sensetive area beware before changes if thing is working dont you dare to change it
+
 'use Strict';
 let goingLeft = true;
 let i = 0;
 let j = 0;
 let HeroGoingleft = false;
-let version = "1.3.2"
+let version = "1.4 - added collison";
+let alredyColided = false;
+
 //Laptop Coding Starts Here
 
-// console.log(document.documentElement.clientWidth);
+console.log(document.documentElement.clientWidth);
 
 let width = document.querySelector(".score-heading");
 width.textContent = "version is " + version;
@@ -52,17 +56,19 @@ function moveHero(key) {
     else if (key === "v") {
         standingStill = true;
         shooting = false;
-        if (document.querySelector(".gun").classList.contains("hidden")) {
-            shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
+        console.log(document.querySelector(".gun").style.visibility);
+        if (document.querySelector(".gun").style.visibility == "hidden") {
+            // shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
+            shoot();
         }
     }
     else if (key === " ") {
         let jumpMe = document.querySelector(".Heros");
         let delay = 800;
         // let jumpBar=document.querySelector(".progressHero");
-        (onMobile) ? jumpMe.style.animation = "jump ease-in-out 0.1s 1" : jumpMe.style.animation = "jump ease-in-out 0.8s 1";
+        (onMobile) ? jumpMe.style.animation = "jump ease-in-out 0.5s 1" : jumpMe.style.animation = "jump ease-in-out 0.8s 1";
         // jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
-        onMobile ? delay = 100 : delay = 800;
+        onMobile ? delay = 500 : delay = 800;
         setTimeout(function () {
             jumpMe.style.animation = "";
             // jumpBar.style.animation="";
@@ -75,6 +81,7 @@ function moveHero(key) {
         j = 0;
     }
     positionH = Number(positionH.substring(0, positionH.length - 2));
+    // console.log(positionH);
 
     (!HeroGoingleft) ? imgH = "Hero/hero-right-" + j % 3 + ".png" : imgH = "Hero/hero-left-" + j % 3 + ".png";
     // console.log(img1);
@@ -120,7 +127,12 @@ function shoot() {
     let bulletPosition = Number(lastHeroPosition);
     let gunImg = document.querySelector(".gunImg");
     let speedG = 80;
-    gun.classList.remove("hidden");
+    alredyColided=false;
+    // gun.classList.remove("hidden");
+    console.log(gun.style.visibility);
+    gun.style.visibility = "visible";
+    console.log(gun.style.visibility);
+    // gun.style.display = "inline-block";
     gun.style.left = bulletPosition;
     gun.style.left = bulletPosition + "px";
     if (!HeroGoingleft) {
@@ -132,7 +144,11 @@ function shoot() {
         gunImg.src = "Bullets/bullet-1.png";
     }
     setTimeout(() => {
-        gun.classList.add("hidden");
+        // gun.classList.add("hidden");
+        gun.style.visibility="hidden";
+        gun.style.animation="";
+        gun.style.left=lastHeroPosition;
+        // gun.style.display="none";
     }, 2000);
 }
 
@@ -196,24 +212,24 @@ shootElement.addEventListener("touchstart", function (ex) {
 let enemyImg = document.querySelector(".enemyImg");
 let enemy = document.querySelector(".enemy");
 let animationSpeed = 15000;
-setInterval(() => {
-    // console.log("interval");
-    // console.log(enemyImg.src);
-    // if(enemy.style.right==="0vw"){
-    //     console.log("enemy is at 0vw");
-    //     enemyImg.src="Enemy/enemy-0.png";
-    // }
-    // else if(enemy.style.right==="95vw"){
-    //     console.log("enemy is at 95vw");
-    //     enemyImg.src="Enemy/enemy-1.png";
-    // }
-    if (enemyImg.src === "http://127.0.0.1:5500/Enemy/enemy-left-0.png") {
-        enemyImg.src = "Enemy/enemy-right-0.png";
-    }
-    else {
-        enemyImg.src = "Enemy/enemy-left-0.png";
-    }
-}, animationSpeed / 2);
+// setInterval(() => {
+//     // console.log("interval");
+//     // console.log(enemyImg.src);
+//     // if(enemy.style.right==="0vw"){
+//     //     console.log("enemy is at 0vw");
+//     //     enemyImg.src="Enemy/enemy-0.png";
+//     // }
+//     // else if(enemy.style.right==="95vw"){
+//     //     console.log("enemy is at 95vw");
+//     //     enemyImg.src="Enemy/enemy-1.png";
+//     // }
+//     if (enemyImg.src === "http://127.0.0.1:5500/Enemy/enemy-left-0.png") {
+//         enemyImg.src = "Enemy/enemy-right-0.png";
+//     }
+//     else {
+//         enemyImg.src = "Enemy/enemy-left-0.png";
+//     }
+// }, animationSpeed / 2);
 upButton.addEventListener("click", function () {
     moveHero(" ");
 });
@@ -229,40 +245,58 @@ shootButton.addEventListener("click", function () {
 
 
 // Enemy Running Code
-
+let EnemyStanding = true;
+let oldPosition=0;
+let EnemygoingLeft=true;
 setInterval(() => {
-
-    if (!EnemyStanding) {
-        let speedE = -100;
+    // console.log("started");
+    let progressEnemy= document.querySelector(".progressEnemy");
+    let ej=0;
+    // if (!EnemyStanding) {
+        let speedE = 15;
         let tempImg;
-        (!goingLeft) ? tempImg = "Hero/hero-right-" + ej % 3 + ".png" : tempImg = "Hero/hero-left-" + ej % 3 + ".png";
+        let positionE="";
+        (!EnemygoingLeft) ? tempImg = "Enemy/enemy-right-" + ej % 3 + ".png" : tempImg = "Enemy/enemy-left-" + ej % 3 + ".png";
 
-        let width = document.documentElement.clientWidth;
-        let positionE = enemyCh.style.right;
+        let widthE = document.documentElement.clientWidth;
+        // let positionE = enemy.style.right;
         positionE = Number(positionE.substring(0, positionE.length - 2));
+        // console.log("initial position " + positionE);
         let progressPositionE = progressEnemy.style.right;
-        if (progressPositionE.substring(progressPositionE.length - 2) == "") {
-            positionE = 10 - width;
-            progressPositionE = 10 - width;
-        } else {
-            progressPositionE = Number(progressPositionE.substring(0, progressPositionE.length - 2));
-        }
-
-        if (width + (positionE + speedE) >= 10 && !goingLeft) {
+        // if (progressPositionE.substring(progressPositionE.length - 2) == " ") {
+            // positionE = 10 - width;
+            positionE = oldPosition;
+            // progressPositionE = 10 - width;
+            progressPositionE=oldPosition;
+        // } else {
+            // progressPositionE = Number(progressPositionE.substring(0, progressPositionE.length - 2));
+        // }
+        // console.log(progressPositionE);
+        // console.log("firts bool "+EnemygoingLeft);
+        if (EnemygoingLeft) {
             positionE = positionE + speedE;
             progressPositionE = progressPositionE + speedE;
-            if ((width + positionE) <= 100) {
-                goingLeft = true;
-                tempImg.src = "Hero/hero-right-0.png"
+            if ((positionE) >= (widthE-200)) {
+                positionE=width-150;
+                progressPositionE = widthE-150;
+                EnemygoingLeft = false;
+                // console.log("ifs bool "+ EnemygoingLeft);
+                // console.log("take1");
+                tempImg.src = "Enemy/enemy-right-0.png"
             }
-        } else {
+        } 
+        else if(!EnemygoingLeft) {
+            // console.log("else bool "+ EnemygoingLeft);
+            // console.log("position in right side "+positionE);
             positionE = positionE - speedE;
-            progressPositionE = progressPositionE - speedE;
-            if (positionE > -100) {
-                goingLeft = false;
-                tempImg.src = "Hero/hero-left-0.png"
-                positionE = -100;
-                progressPositionE = -100;
+            // console.log(positionE);
+            // progressPositionE = progressPositionE - speedE;
+            if (positionE <= 50) {
+                EnemygoingLeft = true;
+                // console.log("take10");
+                tempImg.src = "Enemy/enemy-left-0.png"
+                positionE = 50;
+                progressPositionE = 50;
             }
         }
 
@@ -270,20 +304,26 @@ setInterval(() => {
         if (ej % 3 === 0) {
             ej = 0;
         }
+        // positionE=progressPositionE;
+        progressPositionE=positionE;
+        oldPosition=positionE;
+        // console.log(oldPosition,positionE);
         enemyImg.src = tempImg;
         positionE += "px";
         progressPositionE += "px";
-        enemyCh.style.right = positionE;
+        enemy.style.right = positionE;
         progressEnemy.style.right = progressPositionE;
-    }
-}, 1000);
+        // console.log("ended" + positionE);
+    // }
+}, 100);
 
 //Enemy Jumping code
 
 setInterval(() => {
-    EnemyStanding = true;
-    let jumpEnemy = (Math.floor(Math.random() * 10) >= 3) ? true : false;
+    // EnemyStanding = true;
+    let jumpEnemy = (Math.floor(Math.random() * 15) >= 3) ? true : false;
     // console.log("Jump code: " + jumpEnemy);
+    jumpEnemy=false;  //--------------->>>>>
     if (jumpEnemy) {
         let jumpEnemy = document.querySelector(".Enemys");
         if (!(jumpEnemy.style.animation)) {
@@ -293,5 +333,59 @@ setInterval(() => {
             }, 1000);
         }
     }
-    EnemyStanding = false;
-}, 5000);
+    // console.log("interrupted");
+    // EnemyStanding = false;
+}, 1000);
+
+
+
+// Gun and Collision Logic Goes Here
+let gun= document.querySelector(".gun");
+let enemyPos= document.querySelector(".enemy");
+let enemydiv= document.querySelector(".Enemys");
+let enemyHealth=document.querySelector("#ProgEnemy");
+let playerpos= document.querySelector(".Heros");
+setInterval(() => {
+    let gunpos=gun.getBoundingClientRect();
+    let enemypos=enemyPos.getBoundingClientRect();
+console.log(enemypos.top, enemypos.bottom-enemypos.top, gunpos.top, enemypos.right,enemypos.left);
+if(gunpos.top <= enemypos.bottom && !alredyColided){
+    // alert("Collision");
+    if(gunpos.right >= enemypos.left){
+        // alert("Collision");
+        alredyColided=true;
+        enemyHealth.value=Number(enemyHealth.value)-100;
+        if(enemyHealth.value<=0){
+            enemydiv.classList.add("hidden");
+            document.querySelector(".winbox").classList.remove("hidden");
+            document.querySelector(".winPage").classList.remove("hidden");
+        }
+        gun.style.left=playerpos.style.left;
+        gun.style.animation="";
+        gun.style.visibility="hidden";
+        // console.log(Number(enemyHealth.value));
+    }
+}
+},100);
+
+
+function vanish(){
+// let x=document.querySelector(".again").addEventListener("click",function(){
+    console.log("cl");
+       document.querySelector(".winbox").classList.add("hidden");
+       document.querySelector(".winPage").classList.add("hidden");
+    //   let e= document.querySelector(".Enemys").classList.remove("hidden");
+    //   e.style.right="0px";
+    enemydiv.classList.remove("hidden");
+    enemyHealth.value="100";
+    enemydiv.style.right="0px";
+
+    //    document.querySelector(".winPage").style.visibility="hidden";
+}
+
+
+
+
+// to-do
+//gun should be fired even in mid air
+//NAN means ke ema pixel aavta hache check karva

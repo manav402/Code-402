@@ -154,6 +154,7 @@
 }
 
 .gun {
+    visibility:hidden;
     position: absolute;
     top: 57vh;
     left: 0vw;
