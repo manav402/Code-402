@@ -105,17 +105,64 @@ button {
     /* color: red; */
 }
 
-#ProgHero {
+/* #ProgHero {
     height: 3vh;
     width: 15vh;
     /* margin:auto; */
-}
+/* } */
 
-#ProgEnemy {
-    height: 3vh;
+/* #ProgEnemy { */
+    /* height: 3vh; */
+    /* width: 15vh; */
+/* } */
+#ProgHero {
+    height: 3vh !important;
     width: 15vh;
 }
 
+#ProgEnemy {
+    height: 3vh !important;
+    width: 15vh;
+}
+
+
+/* For Firefox */
+
+#ProgHero::-moz-progress-bar {
+    background: green;
+}
+
+
+/* For Chrome or Safari */
+
+#ProgHero::-webkit-progress-value {
+    background: green;
+}
+
+
+/* For IE10 */
+
+#ProgHero {
+    background: green;
+}
+
+#ProgEnemy::-moz-progress-bar {
+    background: red;
+}
+
+
+/* For Chrome or Safari */
+
+#ProgEnemy::-webkit-progress-value {
+    background: red;
+}
+
+
+/* For IE10 */
+
+#ProgEnemy {
+    background: red;
+}
 
 .Enemys {
     display: inline-block;
