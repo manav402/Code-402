@@ -1,0 +1,35 @@
+.navigating{
+    position: absolute;
+    display: inline-block;
+    top: 80vh;
+    z-index: 30;
+}
+.arrowimgs{
+    height: 20vh;
+}
+.up{
+    left:16vw;
+    margin-left:-5vw;
+}
+.up img{
+    height: 15vh
+}
+.left{
+    left:5vw;
+}
+.right{
+    left:25vw;
+}
+.shoot{
+    right:10vw;
+}
+.shoot img{
+    width: 15vh !important;
+    height: auto !important;
+}
+.rotate{
+    display:none;
+}
+.rotate h1{
+    display:none;
+}
