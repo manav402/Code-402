@@ -8,8 +8,8 @@ let HeroGoingleft = false;
 
 // console.log(document.documentElement.clientWidth);
 
-let width=document.querySelector(".score-heading");
-width.textContent="Width is "+document.documentElement.clientWidth;
+let width = document.querySelector(".score-heading");
+width.textContent = "Width is " + document.documentElement.clientWidth;
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     //   if(e.key==="w"){
@@ -21,7 +21,7 @@ width.textContent="Width is "+document.documentElement.clientWidth;
 document.addEventListener("keydown", function (e) {
     moveHero(e.key);
 });
-
+let lastHeroPosition;
 function moveHero(key) {
     let standingStill = false;
     let shooting = false;
@@ -32,7 +32,9 @@ function moveHero(key) {
     let width = document.documentElement.clientWidth;
     positionH = hero.style.left;
     progressPositionH = heroProgress.style.left;
-    // 
+    if(document.documentElement.clientWidth<=1100){
+        speedH = 3;
+    }
     progressPositionH = Number(progressPositionH.substring(0, progressPositionH.length - 2));
     // console.log(position);
 
@@ -48,21 +50,21 @@ function moveHero(key) {
     else if (key === "v") {
         standingStill = true;
         shooting = false;
-        if(document.querySelector(".gun").classList.contains("hidden")){
-           shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
+        if (document.querySelector(".gun").classList.contains("hidden")) {
+            shoot(positionH.substring(0, positionH.length - 2)); //100px -> 100
         }
     }
-    else if (key === " "){
-        let jumpMe=document.querySelector(".Heros");
+    else if (key === " ") {
+        let jumpMe = document.querySelector(".Heros");
         // let jumpBar=document.querySelector(".progressHero");
-        jumpMe.style.animation="jump ease-in-out 0.8s 1";
+        jumpMe.style.animation = "jump ease-in-out 0.5s 1";
         // jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
-        setTimeout(function(){
-            jumpMe.style.animation="";
+        setTimeout(function () {
+            jumpMe.style.animation = "";
             // jumpBar.style.animation="";
-        },1000);
-        standingStill= true;
-        j= 0;
+        }, 500);
+        standingStill = true;
+        j = 0;
     }
     else {
         standingStill = true;
@@ -91,8 +93,8 @@ function moveHero(key) {
             if (positionH <= 0) {
                 HeroGoingleft = false;
                 heroImg.src = "Hero/hero-0-left.png"
-                positionH=0;
-                progressPositionH=0;
+                positionH = 0;
+                progressPositionH = 0;
             }
         }
     }
@@ -101,6 +103,7 @@ function moveHero(key) {
     }
     heroImg.src = imgH;
     // console.log(position);
+    lastHeroPosition = positionH;
     positionH += "px";
     progressPositionH += "px";
     // console.log(position);
@@ -108,21 +111,21 @@ function moveHero(key) {
     heroProgress.style.left = progressPositionH;
 }
 
-function shoot(gunPosition){
-    let gun=document.querySelector(".gun");
-    let bulletPosition=Number(gunPosition);
-    let gunImg=document.querySelector(".gunImg");
-    let speedG=80;
+function shoot() {
+    let gun = document.querySelector(".gun");
+    let bulletPosition = Number(lastHeroPosition);
+    let gunImg = document.querySelector(".gunImg");
+    let speedG = 80;
     gun.classList.remove("hidden");
     gun.style.left = bulletPosition;
     gun.style.left = bulletPosition + "px";
-    if(!HeroGoingleft){
-        gun.style.animation="GunRight linear 2s 1";
-        gunImg.src="Bullets/bullet-0.png";
+    if (!HeroGoingleft) {
+        gun.style.animation = "GunRight linear 2s 1";
+        gunImg.src = "Bullets/bullet-0.png";
     }
-    else{
-        gun.style.animation="GunLeft linear 2s 1";
-        gunImg.src="Bullets/bullet-1.png";
+    else {
+        gun.style.animation = "GunLeft linear 2s 1";
+        gunImg.src = "Bullets/bullet-1.png";
     }
     setTimeout(() => {
         gun.classList.add("hidden");
@@ -133,28 +136,62 @@ function shoot(gunPosition){
 
 //Mobile Coding Starts Here
 
-let upButton=document.querySelector(".up");
-let leftButton=document.querySelector(".left");
-let rightButton=document.querySelector(".right");
-let shootButton=document.querySelector(".shoot");
+let upButton = document.querySelector(".up");
+let leftButton = document.querySelector(".left");
+let rightButton = document.querySelector(".right");
+let shootButton = document.querySelector(".shoot");
 
-upButton.addEventListener("click",function(){
+upButton.addEventListener("click", function () {
     moveHero(" ");
 });
-leftButton.addEventListener("click",function(){
+leftButton.addEventListener("click", function () {
     moveHero("a");
 });
-rightButton.addEventListener("click",function(){
+rightButton.addEventListener("click", function () {
     moveHero("d");
 });
-shootButton.addEventListener("click",function(){
+shootButton.addEventListener("click", function () {
     moveHero("v");
 });
 
+//touch sensetive area
 
-let enemyImg=document.querySelector(".enemyImg");
-let enemy=document.querySelector(".enemy");
-let animationSpeed=15000;
+let touchArea = document.querySelector(".arrows");
+let oldX = 0, oldY = 0, newX, newY;
+let shootElement= document.querySelector(".shoot");
+touchArea.addEventListener("touchmove", function (e) {
+    // setTimeout(() => {
+    console.log("even if you tuch this will only print after 1 second");
+
+    console.log("touch is in " + e.touches[0].clientX + " " + e.touches[0].clientY);
+    newX = e.touches[0].clientX;
+    newY = e.touches[0].clientY;
+    if (newX > oldX && newY <= oldY + 50 && newY >= oldY - 50) {
+        console.log("here");
+        moveHero("d");
+    }
+    else if (newX < oldX && newY <= oldY + 50 && newY >= oldY - 50) {
+        console.log("here");
+        moveHero("a");
+    }
+    else if (newY > oldY && newX <= oldX + 50 && newX >= oldX - 50) {
+        console.log("here");
+        moveHero(" ");
+    }
+    oldX = newX;
+    oldY = newY;
+    // }, 200);
+});
+shootElement.addEventListener("touchstart", function (ex) {
+    console.log("touch is in " + ex.touches[0].clientX + " " + ex.touches[0].clientY);
+    oldX = ex.touches[0].clientX;
+    oldY = ex.touches[0].clientY;
+    shoot();
+});
+
+let enemyImg = document.querySelector(".enemyImg");
+let enemy = document.querySelector(".enemy");
+let animationSpeed = 15000;
 setInterval(() => {
     // console.log("interval");
     // console.log(enemyImg.src);
@@ -166,10 +203,10 @@ setInterval(() => {
     //     console.log("enemy is at 95vw");
     //     enemyImg.src="Enemy/enemy-1.png";
     // }
-    if (enemyImg.src ==="http://127.0.0.1:5500/Enemy/enemy-left-0.png"){
-        enemyImg.src="Enemy/enemy-right-0.png";
+    if (enemyImg.src === "http://127.0.0.1:5500/Enemy/enemy-left-0.png") {
+        enemyImg.src = "Enemy/enemy-right-0.png";
     }
-    else{
-        enemyImg.src="Enemy/enemy-left-0.png";
+    else {
+        enemyImg.src = "Enemy/enemy-left-0.png";
     }
-}, animationSpeed/2);
+}, animationSpeed / 2);
