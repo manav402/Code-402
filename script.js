@@ -3,7 +3,7 @@ let goingLeft = true;
 let i = 0;
 let j = 0;
 let HeroGoingleft = false;
-let version = "1.3.0 with touch and button"
+let version = "1.3.1 with added delay"
 //Laptop Coding Starts Here
 
 // console.log(document.documentElement.clientWidth);
@@ -30,9 +30,11 @@ function moveHero(key) {
     let heroImg = document.querySelector(".heroImg");
     let heroProgress = document.querySelector(".progressHero");
     let width = document.documentElement.clientWidth;
+    let onMobile=false;
     positionH = hero.style.left;
     progressPositionH = heroProgress.style.left;
     if(document.documentElement.clientWidth<=1100){
+        onMobile=true;
         speedH = 3;
     }
     progressPositionH = Number(progressPositionH.substring(0, progressPositionH.length - 2));
@@ -56,13 +58,15 @@ function moveHero(key) {
     }
     else if (key === " ") {
         let jumpMe = document.querySelector(".Heros");
+        let delay=800;
         // let jumpBar=document.querySelector(".progressHero");
-        jumpMe.style.animation = "jump ease-in-out 0.5s 1";
+        (onMobile)?jumpMe.style.animation = "jump ease-in-out 0.1s 1":jumpMe.style.animation = "jump ease-in-out 0.8s 1";
         // jumpBar.style.animation="jumpBar ease-in-out 0.8s 1";
+        onMobile?delay=100:delay=800;
         setTimeout(function () {
             jumpMe.style.animation = "";
             // jumpBar.style.animation="";
-        }, 500);
+        }, delay);
         standingStill = true;
         j = 0;
     }
