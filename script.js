@@ -157,7 +157,8 @@ function shoot() {
     let gunImg = document.querySelector(".gunImg");
     let speedG = 80;
 
-    gun.style.top = document.querySelector(".hero").style.top;
+    gun.style.top = document.querySelector(".Heros").style.top;
+    console.log(gun.style.top,document.querySelector(".hero").style.top)
     gun.style.visibility = "visible";
     alredyColided = false;
     alredyFired= true;
@@ -345,16 +346,11 @@ setInterval(() => {
 
     let gunpos = gun.getBoundingClientRect();
     let enemypos = enemyPos.getBoundingClientRect();
-    console.log(alredyFired);
     if (gunpos.top <= enemypos.bottom && !alredyColided) {
-        console.log("inside first if");
-        console.log(gunpos.right);
         if (gunpos.right >= enemypos.left -20 && gunpos.right <= enemypos.left + 20) {
-            console.log("inside second if");
 
             alredyColided = true;
             enemyHealth.value = Number(enemyHealth.value) - 10;
-            console.log(enemyHealth.value);
 
             if (enemyHealth.value <= 0) {
                 enemydiv.classList.add("hidden");
@@ -397,3 +393,7 @@ function vanish() {
 // TO-DO
 //gun should be fired even in mid air
 //and enemy should also fire gun
+
+//next goal - after succesfully releasing
+//limited number of gun
+//multiplayer
