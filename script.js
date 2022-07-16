@@ -6,7 +6,7 @@ let goingLeft = true;
 let i = 0;
 let j = 0;
 let HeroGoingleft = false;
-let version = "1.4 - added collison";
+let version = "1.4.5 - BUG fixed for enemy movement";
 let alredyColided = false;
 let lastHeroPosition;
 let alredyFired = false;
@@ -160,6 +160,7 @@ function shoot() {
     gun.style.top = document.querySelector(".hero").style.top;
     gun.style.visibility = "visible";
     alredyColided = false;
+    alredyFired= true;
 
     gun.style.left = bulletPosition;
     gun.style.left = bulletPosition + "px";
@@ -243,24 +244,6 @@ shootElement.addEventListener("touchstart", function (ex) {
 let enemyImg = document.querySelector(".enemyImg");
 let enemy = document.querySelector(".enemy");
 let animationSpeed = 15000;
-// setInterval(() => {
-//     // console.log("interval");
-//     // console.log(enemyImg.src);
-//     // if(enemy.style.right==="0vw"){
-//     //     console.log("enemy is at 0vw");
-//     //     enemyImg.src="Enemy/enemy-0.png";
-//     // }
-//     // else if(enemy.style.right==="95vw"){
-//     //     console.log("enemy is at 95vw");
-//     //     enemyImg.src="Enemy/enemy-1.png";
-//     // }
-//     if (enemyImg.src === "http://127.0.0.1:5500/Enemy/enemy-left-0.png") {
-//         enemyImg.src = "Enemy/enemy-right-0.png";
-//     }
-//     else {
-//         enemyImg.src = "Enemy/enemy-left-0.png";
-//     }
-// }, animationSpeed / 2);
 
 upButton.addEventListener("click", function () {
     moveHero(" ");
@@ -280,52 +263,31 @@ shootButton.addEventListener("click", function () {
 let EnemyStanding = true;
 let oldPosition = 0;
 let EnemygoingLeft = true;
+let progressEnemy = document.querySelector(".progressEnemy");
+let ej = 0;
+let speedE = 15;
+let tempImg;
 setInterval(() => {
-    // console.log("started");
-    let progressEnemy = document.querySelector(".progressEnemy");
-    let ej = 0;
-    // if (!EnemyStanding) {
-    let speedE = 15;
-    let tempImg;
-    let positionE = "";
+    let positionE = enemy.style.right;
     (!EnemygoingLeft) ? tempImg = "Enemy/enemy-right-" + ej % 3 + ".png" : tempImg = "Enemy/enemy-left-" + ej % 3 + ".png";
 
     let widthE = document.documentElement.clientWidth;
-    // let positionE = enemy.style.right;
     positionE = Number(positionE.substring(0, positionE.length - 2));
-    // console.log("initial position " + positionE);
     let progressPositionE = progressEnemy.style.right;
-    // if (progressPositionE.substring(progressPositionE.length - 2) == " ") {
-    // positionE = 10 - width;
-    positionE = oldPosition;
-    // progressPositionE = 10 - width;
-    progressPositionE = oldPosition;
-    // } else {
-    // progressPositionE = Number(progressPositionE.substring(0, progressPositionE.length - 2));
-    // }
-    // console.log(progressPositionE);
-    // console.log("firts bool "+EnemygoingLeft);
     if (EnemygoingLeft) {
         positionE = positionE + speedE;
         progressPositionE = progressPositionE + speedE;
-        if ((positionE) >= (widthE - 200)) {
+        if ((positionE) >= (widthE - 50)) {
             positionE = width - 150;
             progressPositionE = widthE - 150;
             EnemygoingLeft = false;
-            // console.log("ifs bool "+ EnemygoingLeft);
-            // console.log("take1");
             tempImg.src = "Enemy/enemy-right-0.png"
         }
     }
     else if (!EnemygoingLeft) {
-        // console.log("else bool "+ EnemygoingLeft);
-        // console.log("position in right side "+positionE);
-        positionE = positionE - speedE;
-        // console.log(positionE);
-        // progressPositionE = progressPositionE - speedE;
-        if (positionE <= 50) {
+        positionE = Number(positionE) - speedE;
+        if (positionE <= 10) {
             EnemygoingLeft = true;
-            // console.log("take10");
             tempImg.src = "Enemy/enemy-left-0.png"
             positionE = 50;
             progressPositionE = 50;
@@ -336,17 +298,13 @@ setInterval(() => {
     if (ej % 3 === 0) {
         ej = 0;
     }
-    // positionE=progressPositionE;
     progressPositionE = positionE;
     oldPosition = positionE;
-    // console.log(oldPosition,positionE);
     enemyImg.src = tempImg;
     positionE += "px";
     progressPositionE += "px";
     enemy.style.right = positionE;
     progressEnemy.style.right = progressPositionE;
-    // console.log("ended" + positionE);
-    // }
 }, 100);
 
 //Enemy Jumping code
@@ -354,7 +312,7 @@ setInterval(() => {
 setInterval(() => {
 
     let jumpEnemy = (Math.floor(Math.random() * 15) >= 3) ? true : false;
-
+    // jumpEnemy=false;
     if (jumpEnemy) {
 
         let jumpEnemy = document.querySelector(".Enemys");
@@ -387,13 +345,16 @@ setInterval(() => {
 
     let gunpos = gun.getBoundingClientRect();
     let enemypos = enemyPos.getBoundingClientRect();
-
+    console.log(alredyFired);
     if (gunpos.top <= enemypos.bottom && !alredyColided) {
-
-        if (gunpos.right >= enemypos.left - 20 && gunpos.right <= enemypos.left + 20) {
+        console.log("inside first if");
+        console.log(gunpos.right);
+        if (gunpos.right >= enemypos.left -20 && gunpos.right <= enemypos.left + 20) {
+            console.log("inside second if");
 
             alredyColided = true;
             enemyHealth.value = Number(enemyHealth.value) - 10;
+            console.log(enemyHealth.value);
 
             if (enemyHealth.value <= 0) {
                 enemydiv.classList.add("hidden");
@@ -410,7 +371,7 @@ setInterval(() => {
 
     }
 
-}, 100);
+}, 10);
 
 // for clearing end winning screen
 
@@ -435,6 +396,4 @@ function vanish() {
 
 // TO-DO
 //gun should be fired even in mid air
-//NAN means ke ema pixel aavta hache check karva
-//enemy movement jumping and firing thik karvi
-//hero side badhu done che enemy side badhu fix karvanu che ok
+//and enemy should also fire gun
