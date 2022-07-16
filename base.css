@@ -185,6 +185,16 @@ button {
     display: none;
 }
 
+.gunE {
+    visibility : hidden;
+    position: absolute;
+    top: 57vh;
+    left: 0vw;
+    max-height: 10vh;
+    max-width: 10vh;
+    overflow: hidden;
+    z-index: 100;
+}
 .gun {
     visibility : hidden;
     position: absolute;

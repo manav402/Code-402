@@ -71,7 +71,7 @@ function moveHero(key) {
     }
 
     else if (key === " ") {
-        
+
         let jumpMe = document.querySelector(".Heros");
         let delay = 800;
 
@@ -89,7 +89,7 @@ function moveHero(key) {
     }
 
     else {
-        
+
         standingStill = true;
         j = 0;
 
@@ -157,13 +157,19 @@ function shoot() {
     let gunImg = document.querySelector(".gunImg");
     let speedG = 80;
 
-    gun.style.top = document.querySelector(".Heros").style.top;
-    console.log(gun.style.top,document.querySelector(".hero").style.top)
+    // console.log(gun.style.top,"x: "+document.querySelector(".Heros").style.top,"r:"+gun.style.left);
+    // gun.style.top = document.querySelector(".Heros").style.top;
+    // console.log(gun.style.top,"x: "+document.querySelector(".Heros").style.top);
+    let gunTop = gun.getBoundingClientRect().top;
+    let heroTop = document.querySelector(".Heros").getBoundingClientRect();
+    gunTop = heroTop.top - ((heroTop.top - heroTop.bottom) / 2);
+    gun.style.top = Math.floor(gunTop) + "px";
+    console.log(gunTop);
     gun.style.visibility = "visible";
     alredyColided = false;
-    alredyFired= true;
+    alredyFired = true;
 
-    gun.style.left = bulletPosition;
+    // gun.style.left = bulletPosition;
     gun.style.left = bulletPosition + "px";
 
     if (!HeroGoingleft) {
@@ -319,15 +325,15 @@ setInterval(() => {
         let jumpEnemy = document.querySelector(".Enemys");
 
         if (!(jumpEnemy.style.animation)) {
-        
+
             jumpEnemy.style.animation = "jump ease-in-out 0.8s 1";
-        
+
             setTimeout(function () {
                 jumpEnemy.style.animation = "";
             }, 1000);
-        
+
         }
-    
+
     }
 
 }, 1000);
@@ -346,8 +352,8 @@ setInterval(() => {
 
     let gunpos = gun.getBoundingClientRect();
     let enemypos = enemyPos.getBoundingClientRect();
-    if (gunpos.top <= enemypos.bottom && !alredyColided) {
-        if (gunpos.right >= enemypos.left -20 && gunpos.right <= enemypos.left + 20) {
+    if (gunpos.top <= enemypos.bottom && !alredyColided && gunpos.top >= enemypos.top) {
+        if (gunpos.right >= enemypos.left - 20 && gunpos.right <= enemypos.left + 20) {
 
             alredyColided = true;
             enemyHealth.value = Number(enemyHealth.value) - 10;
