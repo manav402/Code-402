@@ -397,8 +397,8 @@ function vanish() {
 
 
 // TO-DO
-//gun should be fired even in mid air
 //and enemy should also fire gun
+//notification for touch device that thay can play with touch
 
 //next goal - after succesfully releasing
 //limited number of gun
